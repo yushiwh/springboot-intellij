@@ -14,6 +14,9 @@ public class Ch522Application {
 	 private String bookAuthor;
 	 @Value("${book.name}")
 	 private String bookName;
+
+
+
 	
 	 @RequestMapping("/")
 	    String index() {
