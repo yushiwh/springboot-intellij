@@ -15,12 +15,6 @@ public class Ch522Application {
 	 @Value("${book.name}")
 	 private String bookName;
 
-
-
-
-
-
-	
 	 @RequestMapping("/")
 	    String index() {
 			System.out.println("测试一下后台的输出");
