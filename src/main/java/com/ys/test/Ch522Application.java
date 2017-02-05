@@ -1,4 +1,4 @@
-package com.wisely.ch5_2_2;
+package com.ys.test;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
