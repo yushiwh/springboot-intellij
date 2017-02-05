@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @SpringBootApplication
-public class Ch522Application {
+public class Application {
 	 @Value("${author.age}")
 	 private String bookAuthor;
 	 @Value("${author.name}")
@@ -25,7 +25,7 @@ public class Ch522Application {
 
 
 	public static void main(String[] args) {
-         SpringApplication.run(Ch522Application.class, args);
+         SpringApplication.run(Application.class, args);
 
     }
 }
