@@ -1,4 +1,4 @@
-package com.ys.test;
+package com.ys;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @SpringBootApplication
 public class Ch522Application {
-	
-	 @Value("${book.author}")
+	 @Value("${author.age}")
 	 private String bookAuthor;
-	 @Value("${book.name}")
+	 @Value("${author.name}")
 	 private String bookName;
+
+
 
 	 @RequestMapping("/")
 	    String index() {
@@ -21,7 +22,10 @@ public class Ch522Application {
 	        return "book name is:"+bookName+" and book author is:" + bookAuthor;
 	    }
 
-    public static void main(String[] args) { 
-        SpringApplication.run(Ch522Application.class, args);
+
+
+	public static void main(String[] args) {
+         SpringApplication.run(Ch522Application.class, args);
+
     }
 }
