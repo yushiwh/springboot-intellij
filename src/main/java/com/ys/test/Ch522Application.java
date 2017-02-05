@@ -17,10 +17,13 @@ public class Ch522Application {
 
 
 
+
+
+
 	
 	 @RequestMapping("/")
 	    String index() {
-		
+			System.out.println("测试一下后台的输出");
 	        return "book name is:"+bookName+" and book author is:" + bookAuthor;
 	    }
 
