@@ -2,11 +2,14 @@ package com.ys.bean;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+
 @Component
 @ConfigurationProperties(prefix = "author") //1 
 public class AuthorSettings {
     private String name;
     private Long age;
+    private String ddd;
+
 
     public String getName() {
         return name;
