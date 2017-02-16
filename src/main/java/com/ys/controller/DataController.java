@@ -52,6 +52,31 @@ public class DataController {
 
     }
 
+    @RequestMapping("/q1like")
+    public List<Person> q1like(String address) {
+
+        List<Person> people = personRepository.findByAddressContaining(address);
+
+        return people;
+
+    }
+    @RequestMapping("/q1likefirst")
+    public List<Person> findByAddressStartingWith(String address) {
+
+        List<Person> people = personRepository.findByAddressStartingWith(address);
+
+        return people;
+
+    }
+    @RequestMapping("/q1likeend")
+    public List<Person> findByAddressEndingWith(String address) {
+
+        List<Person> people = personRepository.findByAddressEndingWith(address);
+
+        return people;
+
+    }
+
     /**
      * 测试findByNameAndAddress
      */
@@ -113,14 +138,14 @@ public class DataController {
     }
 
 
-    @RequestMapping("/auto")
-    public Page<Person> auto(Person person) {
-
-        Page<Person> pagePeople = personRepository.findByAuto(person, new PageRequest(0, 10));
-
-        return pagePeople;
-
-    }
+    //@RequestMapping("/auto")
+    //public Page<Person> auto(Person person) {
+    //
+    //    Page<Person> pagePeople = personRepository.findByAuto(person, new PageRequest(0, 10));
+    //
+    //    return pagePeople;
+    //
+    //}
 
 
 }
