@@ -4,6 +4,8 @@ import com.ys.bean.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import java.util.List;
 
@@ -13,6 +15,7 @@ import java.util.List;
  *
  * Created by yushi on 2017/2/15.
  */
+@RepositoryRestResource(path = "people")//修改REST访问的默认的路径
 public interface PersonRepository extends JpaRepository<Person, Long> {
     //使用方法名查询，接受一个name的参数
     List<Person> findByAddress(String address);
@@ -32,5 +35,9 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
     Person withNameAndAddressQuery(@Param("name")String name,@Param("address")String address);
     //使用@NamedQuery查询，请注意实体中做的@NamedQuery的定义
     Person withNameAndAddressNamedQuery(String name,String address);
+
+    //测试一下rest,nameStarstWith相当于是访问的路径/persons/search/nameStarstWith?name=喻适
+    @RestResource(path = "nameStarstWith",rel = "nameStarstWith")
+    Person findByNameStartsWith(@Param("name") String name);
 
 }
