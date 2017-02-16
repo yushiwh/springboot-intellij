@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-
+/**
+ * JPA的访问的路径和调用
+ */
 @RestController
 public class DataController {
     //1 Spring Data JPA已自动为你注册bean，所以可自动注入
@@ -60,6 +62,7 @@ public class DataController {
         return people;
 
     }
+
     @RequestMapping("/q1likefirst")
     public List<Person> findByAddressStartingWith(String address) {
 
@@ -68,6 +71,7 @@ public class DataController {
         return people;
 
     }
+
     @RequestMapping("/q1likeend")
     public List<Person> findByAddressEndingWith(String address) {
 

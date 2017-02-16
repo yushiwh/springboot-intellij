@@ -8,6 +8,9 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 /**
+ *
+ * 调用的接口，继承JPA的接口，方法基本上都有，查看书本251页
+ *
  * Created by yushi on 2017/2/15.
  */
 public interface PersonRepository extends JpaRepository<Person, Long> {
