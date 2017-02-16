@@ -2,6 +2,9 @@ package com.ys.service;
 
 import com.ys.bean.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +37,29 @@ public class DemoServiceImpl implements DemoService {
             throw new IllegalArgumentException("喻适虽然已经存在，但是数据不会回滚");
         }
 
+        return p;
+    }
+
+    @Override
+    @CachePut(value = "perple", key = "#person.id")//CachePut缓存新增的或者更新的数据到缓存
+    public Person save(Person person) {
+        Person p = personRepository.save(person);
+        System.out.println("为id、key为：" + p.getId() + "数据做了缓存");
+        return p;
+    }
+
+    @Override
+    @CacheEvict(value = "people")//从缓存中删除key为id的数据
+    public void remove(Long id) {
+        System.out.println("删除了 id、key为" + id + "的数据缓存");
+        personRepository.delete(id);
+    }
+
+    @Override
+    @Cacheable(value = "people", key = "#person.id")//缓存数据
+    public Person findOne(Person person) {
+        Person p = personRepository.findOne(person.getId());
+        System.out.println("为id、key为：" + p.getId() + "数据做了缓存");
         return p;
     }
 }
