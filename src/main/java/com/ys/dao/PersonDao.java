@@ -8,6 +8,7 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by yushi on 2017/2/20.
@@ -27,12 +28,12 @@ public class PersonDao {
     ValueOperations<Object, Object> valOps;// 使用@Resource指定redisTemplate，可注入基于对象的简单属性操作方法
 
     public void stringRedisTemplateDemo() {
-        valOpsStr.set("xx", "yy");//通过set方法，存储字符串类型
+        valOpsStr.set("xx", "yy", 10, TimeUnit.SECONDS);//通过set方法，存储字符串类型,10秒钟过期时间
     }
 
 
     public void save(PersonRedis personRedis) {
-        valOps.set(personRedis.getId(), personRedis);//通过set方法，存储对象
+        valOps.set(personRedis.getId(), personRedis, 10, TimeUnit.SECONDS);//通过set方法，存储对象,10秒钟过期时间
     }
 
 
